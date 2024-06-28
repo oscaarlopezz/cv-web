@@ -75,7 +75,7 @@
                                     <div class="h4 mt-0 title">Información Básica</div>
                                     <div class="row">
                                         <div class="col-sm-4"><strong class="text-uppercase">Edad:</strong></div>
-                                        <div class="col-sm-8">20</div>
+                                        <div class="col-sm-8" id="edad"></div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-sm-4"><strong class="text-uppercase">E-mail:</strong></div>
@@ -245,6 +245,19 @@
     <script src="js/now-ui-kit.js?ver=1.1.0"></script>
     <script src="js/aos.js?ver=1.1.0"></script>
     <script src="scripts/main.js?ver=1.1.0"></script>
+    <script>
+    function calculateAge(birthday) {
+        var birthday_arr = birthday.split("/");
+        var birthday_date = new Date(birthday_arr[2], birthday_arr[1] - 1, birthday_arr[0]);
+        var ageDifMs = Date.now() - birthday_date.getTime();
+        var ageDate = new Date(ageDifMs);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
+    var age = calculateAge("28/11/2002");
+    document.querySelector("#edad").textContent = age;
+
+    </script>
 </body>
 
 </html>
